@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    /* CSS for valid and invalid input fields */
+    input:valid {
+      border: 2px solid green;
+    }
+    input:invalid {
+      border: 2px solid red;
+    }
+    form {
+      margin-bottom: 2rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Form Validation Examples</h1>
+
+  <!-- HTML5 Validation Form -->
+  <form>
+    <h2>HTML5 Validation Form</h2>
+
+    <!-- Username with HTML5 length validation -->
+    <label for="html5-username">Username (min 5 chars):</label>
+    <input type="text" id="html5-username" name="username" minlength="5" required>
+
+    <!-- Email with built-in HTML5 validation -->
+    <label for="html5-email">Email:</label>
+    <input type="email" id="html5-email" name="email" required>
+
+    <!-- Password with pattern validation -->
+    <label for="html5-password">Password (min 6 characters):</label>
+    <input type="password" id="html5-password" name="password" minlength="6" required>
+
+    <!-- Age input with number range -->
+    <label for="html5-age">Age (18-100):</label>
+    <input type="number" id="html5-age" name="age" min="18" max="100" required>
+
+    <!-- Checkbox required -->
+    <label>
+      <input type="checkbox" name="terms" required>
+      I agree to the terms and conditions
+    </label>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- JavaScript Validation Form -->
+  <form id="js-form" onsubmit="return validateJSForm()">
+    <h2>JavaScript Validation Form</h2>
+
+    <!-- Username field to be validated with JavaScript -->
+    <label for="js-username">Username (min 5 chars):</label>
+    <input type="text" id="js-username" name="js-username">
+    <span id="js-error" style="color: red;"></span>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // JavaScript function to validate the username field
+    function validateJSForm() {
+      const username = document.getElementById('js-username').value;
+      const errorSpan = document.getElementById('js-error');
+
+      // Check if the username has at least 5 characters
+      if (username.length < 5) {
+        errorSpan.textContent = "Username must be at least 5 characters long.";
+        return false; // Prevent form submission
+      }
+
+      // Clear error if validation passes
+      errorSpan.textContent = "";
+      return true; // Allow form submission
+    }
+  </script>
+
+</body>
+</html>
